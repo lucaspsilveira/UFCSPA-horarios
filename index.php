@@ -1,17 +1,20 @@
 <?php
 include_once "Crawler.php";
-
+date_default_timezone_set("America/Sao_Paulo");
+$todo_dia = false;
+if (isset($_GET['todo_dia']) && $_GET['todo_dia'] == 1)
+  $todo_dia = true;
 $crawler = new Crawler("http://salas.ufcspa.edu.br/w8_relatorio_dia.php?vid_pd=1&vid_instituicao=1&vdata=2019-03-01");
 $crawler->setInstituicao(1);
 $crawler->setPredio(1);
 $crawler->setSite("http://salas.ufcspa.edu.br/w8_relatorio_dia.php?vid_pd=1&vid_instituicao=1&vdata=2019-03-01");
-$disciplinas_predio_um = $crawler->buscarDisciplinas();
+$disciplinas_predio_um = $crawler->buscarDisciplinas($todo_dia);
 $crawler->setPredio(2);
 $crawler->setSite("http://salas.ufcspa.edu.br/w8_relatorio_dia.php?vid_pd=2&vid_instituicao=1&vdata=2019-03-01");
-$disciplinas_predio_dois = $crawler->buscarDisciplinas();
+$disciplinas_predio_dois = $crawler->buscarDisciplinas($todo_dia);
 $crawler->setPredio(3);
 $crawler->setSite("http://salas.ufcspa.edu.br/w8_relatorio_dia.php?vid_pd=3&vid_instituicao=1&vdata=2019-03-01");
-$disciplinas_predio_tres = $crawler->buscarDisciplinas();
+$disciplinas_predio_tres = $crawler->buscarDisciplinas($todo_dia);
 ?>
 
 <!DOCTYPE html>
@@ -49,6 +52,10 @@ $disciplinas_predio_tres = $crawler->buscarDisciplinas();
             <div class="columns">
                 <div class="column is-4">
                     Filtre por curso ou por disciplina:<input class="input" type="text" id="filtraCards" placeholder="Digite seu filtro">
+                </div>
+                <div class="column is-4">
+                  <br>
+                     <input id="check-dia-todo" class="checkbox" type="checkbox" id="filtraCards" <?php if($todo_dia) {echo "checked";} else { echo "";} ?>> Mostrar o dia todo
                 </div>
             </div>
 
@@ -227,6 +234,15 @@ $disciplinas_predio_tres = $crawler->buscarDisciplinas();
 </body>
 <script>
     $(document).ready(function(){
+
+
+      $("#check-dia-todo").click(function(){
+        if ($(this).is(':checked')) {
+          location.href="?todo_dia=1";
+        } else {
+          location.href="?";
+        }
+      });
 
         $("#tab-predio-um").click(function(){
           

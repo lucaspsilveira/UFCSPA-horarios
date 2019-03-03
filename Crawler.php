@@ -29,7 +29,7 @@ class Crawler {
         return $pagina_predio;
     }
 
-    function buscarDisciplinas() {
+    function buscarDisciplinas($todo_dia=false) {
         $pagina = $this->acessaSite();
 
         $dom = new DOMDocument;
@@ -39,7 +39,14 @@ class Crawler {
         foreach ($disciplinas as $d){
             $linha = new StdClass();
             $filhinhos = $d->childNodes;
-            if ($filhinhos->item(1) != null && $filhinhos->item(3) != null && @$filhinhos->item(1)->getElementsByTagName("small")[0]->textContent != "") {
+            $data = "";
+            if ($todo_dia == true) {
+                $data = "00:00";
+            } else {
+                $data = date('H:i',strtotime(date('H:i') . ' -15 minutes'));
+            }
+            
+            if ($filhinhos->item(1) != null && $filhinhos->item(3) != null && @$filhinhos->item(1)->getElementsByTagName("small")[0]->textContent != "" && $data < substr($filhinhos->item(2)->textContent, 0, 5)) {
                 $linha->disciplina =   $filhinhos->item(0)->firstChild->firstChild->textContent;
                 $linha->atividade =  $filhinhos->item(1)->getElementsByTagName("small")[0]->textContent;
                 $linha->curso =  $filhinhos->item(1)->firstChild->textContent;
