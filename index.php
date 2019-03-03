@@ -227,12 +227,14 @@ $disciplinas_predio_tres = $crawler->buscarDisciplinas();
           $(this).toggleClass("is-active", true);
 
           $(".aberta").animate({
-              height: "toggle"
+                  height: "toggle",
+                  opacity: "toggle"
                 });
             $(".aberta").toggleClass("aberta", false);
             //$("#cards-predio-dois").show();
             $("#cards-predio-um").animate({
-                height: "toggle"
+                  height: "toggle",
+                  opacity: "toggle"
                 });
             $("#cards-predio-um").toggleClass("aberta", true);
 
@@ -246,12 +248,14 @@ $disciplinas_predio_tres = $crawler->buscarDisciplinas();
             $(this).toggleClass("is-active", true);
   
             $(".aberta").animate({
-                height: "toggle"
+                  height: "toggle",
+                  opacity: "toggle"
                 });
             $(".aberta").toggleClass("aberta", false);
             //$("#cards-predio-dois").show();
             $("#cards-predio-dois").animate({
-                  height: "toggle"
+                  height: "toggle",
+                  opacity: "toggle"
                 }, "slow");
             $("#cards-predio-dois").toggleClass("aberta", true);
 
@@ -264,12 +268,14 @@ $disciplinas_predio_tres = $crawler->buscarDisciplinas();
           $(this).toggleClass("is-active", true);
 
           $(".aberta").animate({
-              height: "toggle"
+                height: "toggle",
+                opacity: "toggle"
                 }, "slow");
             $(".aberta").toggleClass("aberta", false);
             //$("#cards-predio-dois").show();
             $("#cards-predio-tres").animate({
-                height: "toggle"
+                  height: "toggle",
+                  opacity: "toggle"
                 }, "slow");
             $("#cards-predio-tres").toggleClass("aberta", true);
         });
