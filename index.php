@@ -2,8 +2,16 @@
 include_once "Crawler.php";
 
 $crawler = new Crawler("http://salas.ufcspa.edu.br/w8_relatorio_dia.php?vid_pd=1&vid_instituicao=1&vdata=2019-03-01");
-
-$disciplinas = $crawler->buscarDisciplinas();
+$crawler->setInstituicao(1);
+$crawler->setPredio(1);
+$crawler->setSite("http://salas.ufcspa.edu.br/w8_relatorio_dia.php?vid_pd=1&vid_instituicao=1&vdata=2019-03-01");
+$disciplinas_predio_um = $crawler->buscarDisciplinas();
+$crawler->setPredio(2);
+$crawler->setSite("http://salas.ufcspa.edu.br/w8_relatorio_dia.php?vid_pd=2&vid_instituicao=1&vdata=2019-03-01");
+$disciplinas_predio_dois = $crawler->buscarDisciplinas();
+$crawler->setPredio(3);
+$crawler->setSite("http://salas.ufcspa.edu.br/w8_relatorio_dia.php?vid_pd=3&vid_instituicao=1&vdata=2019-03-01");
+$disciplinas_predio_tres = $crawler->buscarDisciplinas();
 ?>
 
 <!DOCTYPE html>
@@ -43,10 +51,18 @@ $disciplinas = $crawler->buscarDisciplinas();
                     Filtre por curso ou por disciplina:<input class="input" type="text" id="filtraCards" placeholder="Digite seu filtro">
                 </div>
             </div>
-                 
-            <div class="columns is-multiline">
+
+            <div class="tabs is-centered">
+              <ul id="menu-predios">
+                <li class="is-active" id="tab-predio-um"><a >Prédio 1</a></li>
+                <li id="tab-predio-dois"><a >Prédio 2</a></li>
+                <li id="tab-predio-tres"><a >Prédio 3</a></li>
+              </ul>
+            </div>
+               
+          <div id="cards-predio-um" class="columns is-multiline aberta">
             <?php
-                foreach ($disciplinas as $d) { 
+                foreach ($disciplinas_predio_um as $d) { 
             ?>
               <div class="column is-4 cards">
                 <div class="box">
@@ -90,6 +106,101 @@ $disciplinas = $crawler->buscarDisciplinas();
              ?>
               
             </div>
+        
+        
+        
+        
+        </div>
+
+        <div id="cards-predio-dois" class="columns is-multiline" style="display:none">
+        <?php
+                foreach ($disciplinas_predio_dois as $d) { 
+            ?>
+              <div class="column is-4 cards">
+                <div class="box">
+                    <article class="media">
+                      <!-- <div class="media-left">
+                        <figure class="image is-64x64">
+                          <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+                        </figure>
+                      </div> -->
+                      <div class="media-content">
+                        <div class="content">
+                          <p>
+                            <strong class="nome-disciplina"><?php echo $d->disciplina; ?></strong> <small><?php echo $d->atividade; ?></small>
+                            <br>
+                          <label class="nome-curso">  <?php echo $d->curso; ?> </label>
+                            <br>
+                            <small><?php echo $d->horario; ?></small><br>
+                          <small><?php echo $d->sala; ?> - <?php echo $d->sala_descricao; ?></small>  
+                          </p>
+                        </div>
+                        <!-- <nav class="level is-mobile">
+                          <div class="level-left">
+                            <a class="level-item" aria-label="thumbs-up">
+                              <span class="icon is-small">
+                                <i class="far fa-thumbs-up" aria-hidden="true"></i>
+                              </span>
+                            </a>
+                            <a class="level-item" aria-label="thumbs-down">
+                              <span class="icon is-small">
+                                <i class="far fa-thumbs-down" aria-hidden="true"></i>
+                              </span>
+                            </a>
+                          </div>
+                        </nav> -->
+                      </div>
+                    </article>
+                  </div>
+              </div>
+             <?php 
+                }
+             ?>
+        </div>
+        <div id="cards-predio-tres" class="columns is-multiline"  style="display:none">
+        <?php
+                foreach ($disciplinas_predio_dois as $d) { 
+            ?>
+              <div class="column is-4 cards">
+                <div class="box">
+                    <article class="media">
+                      <!-- <div class="media-left">
+                        <figure class="image is-64x64">
+                          <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+                        </figure>
+                      </div> -->
+                      <div class="media-content">
+                        <div class="content">
+                          <p>
+                            <strong class="nome-disciplina"><?php echo $d->disciplina; ?></strong> <small><?php echo $d->atividade; ?></small>
+                            <br>
+                          <label class="nome-curso">  <?php echo $d->curso; ?> </label>
+                            <br>
+                            <small><?php echo $d->horario; ?></small><br>
+                          <small><?php echo $d->sala; ?> - <?php echo $d->sala_descricao; ?></small>  
+                          </p>
+                        </div>
+                        <!-- <nav class="level is-mobile">
+                          <div class="level-left">
+                            <a class="level-item" aria-label="thumbs-up">
+                              <span class="icon is-small">
+                                <i class="far fa-thumbs-up" aria-hidden="true"></i>
+                              </span>
+                            </a>
+                            <a class="level-item" aria-label="thumbs-down">
+                              <span class="icon is-small">
+                                <i class="far fa-thumbs-down" aria-hidden="true"></i>
+                              </span>
+                            </a>
+                          </div>
+                        </nav> -->
+                      </div>
+                    </article>
+                  </div>
+              </div>
+             <?php 
+                }
+             ?>
         </div>
       </div>
   </section>
@@ -107,13 +218,69 @@ $disciplinas = $crawler->buscarDisciplinas();
 </body>
 <script>
     $(document).ready(function(){
+
+        $("#tab-predio-um").click(function(){
+          
+          $("#menu-predios").find("li").each(function(){
+            $(this).toggleClass("is-active", false);
+          });
+          $(this).toggleClass("is-active", true);
+
+          $(".aberta").animate({
+                  width: "toggle"
+                });
+            $(".aberta").toggleClass("aberta", false);
+            //$("#cards-predio-dois").show();
+            $("#cards-predio-um").animate({
+                  width: "toggle"
+                });
+            $("#cards-predio-um").toggleClass("aberta", true);
+
+        });
+
+        $("#tab-predio-dois").click(function(){
+         
+          $("#menu-predios").find("li").each(function(){
+              $(this).toggleClass("is-active", false);
+            });
+            $(this).toggleClass("is-active", true);
+  
+            $(".aberta").animate({
+                  width: "toggle"
+                });
+            $(".aberta").toggleClass("aberta", false);
+            //$("#cards-predio-dois").show();
+            $("#cards-predio-dois").animate({
+                  width: "toggle"
+                }, "slow");
+            $("#cards-predio-dois").toggleClass("aberta", true);
+
+          });
+
+        $("#tab-predio-tres").click(function(){
+          $("#menu-predios").find("li").each(function(){
+            $(this).toggleClass("is-active", false);
+          });
+          $(this).toggleClass("is-active", true);
+
+          $(".aberta").animate({
+                  width: "toggle"
+                }, "slow");
+            $(".aberta").toggleClass("aberta", false);
+            //$("#cards-predio-dois").show();
+            $("#cards-predio-tres").animate({
+                  width: "toggle"
+                }, "slow");
+            $("#cards-predio-tres").toggleClass("aberta", true);
+        });
+
         $("#filtraCards").keyup(function(){        
             var valor = $(this).val().toLowerCase();
             $(".cards").each(function(){
                 if ($(this).find('[class="nome-disciplina"]').text().toLowerCase().indexOf(valor) > -1 || $(this).find('[class="nome-curso"]').text().toLowerCase().indexOf(valor) > -1) {
-                    $(this).show();
+                    $(this).fadeIn();
                 } else {
-                    $(this).hide();
+                    $(this).fadeOut();
                 }
 
             });
