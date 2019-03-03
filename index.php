@@ -204,7 +204,16 @@ $disciplinas_predio_tres = $crawler->buscarDisciplinas();
         </div>
       </div>
   </section>
-
+  <footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong>Desenvolvido</strong> por <a target="_blank" href="https://facebook.com/lucas.pachecos">Lucas Pacheco</a> <br> <br>
+      <a  target="_blank" href="https://bulma.io/">
+      <img src="https://bulma.io/images/made-with-bulma.png" alt="Made with Bulma" width="128" height="24">
+    </a>
+    </p>
+  </div>
+</footer>
   <!-- <section class="section">
     <div class="container">
       <div class="heading">
@@ -229,13 +238,13 @@ $disciplinas_predio_tres = $crawler->buscarDisciplinas();
           $(".aberta").animate({
                   height: "toggle",
                   opacity: "toggle"
-                });
+                }, "slow");
             $(".aberta").toggleClass("aberta", false);
             //$("#cards-predio-dois").show();
             $("#cards-predio-um").animate({
                   height: "toggle",
                   opacity: "toggle"
-                });
+                }, "slow");
             $("#cards-predio-um").toggleClass("aberta", true);
 
         });
@@ -250,7 +259,7 @@ $disciplinas_predio_tres = $crawler->buscarDisciplinas();
             $(".aberta").animate({
                   height: "toggle",
                   opacity: "toggle"
-                });
+                }, "slow");
             $(".aberta").toggleClass("aberta", false);
             //$("#cards-predio-dois").show();
             $("#cards-predio-dois").animate({
