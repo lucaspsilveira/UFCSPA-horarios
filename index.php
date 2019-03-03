@@ -159,7 +159,7 @@ $disciplinas_predio_tres = $crawler->buscarDisciplinas();
         </div>
         <div id="cards-predio-tres" class="columns is-multiline"  style="display:none">
         <?php
-                foreach ($disciplinas_predio_dois as $d) { 
+                foreach ($disciplinas_predio_tres as $d) { 
             ?>
               <div class="column is-4 cards">
                 <div class="box">
