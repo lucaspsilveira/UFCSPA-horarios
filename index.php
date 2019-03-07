@@ -4,16 +4,13 @@ date_default_timezone_set("America/Sao_Paulo");
 $todo_dia = false;
 if (isset($_GET['todo_dia']) && $_GET['todo_dia'] == 1)
   $todo_dia = true;
-$crawler = new Crawler("http://salas.ufcspa.edu.br/w8_relatorio_dia.php?vid_pd=1&vid_instituicao=1&vdata=2019-03-01");
+$crawler = new Crawler("http://salas.ufcspa.edu.br/w8_relatorio_dia.php");
 $crawler->setInstituicao(1);
 $crawler->setPredio(1);
-$crawler->setSite("http://salas.ufcspa.edu.br/w8_relatorio_dia.php?vid_pd=1&vid_instituicao=1&vdata=2019-03-01");
 $disciplinas_predio_um = $crawler->buscarDisciplinas($todo_dia);
 $crawler->setPredio(2);
-$crawler->setSite("http://salas.ufcspa.edu.br/w8_relatorio_dia.php?vid_pd=2&vid_instituicao=1&vdata=2019-03-01");
 $disciplinas_predio_dois = $crawler->buscarDisciplinas($todo_dia);
 $crawler->setPredio(3);
-$crawler->setSite("http://salas.ufcspa.edu.br/w8_relatorio_dia.php?vid_pd=3&vid_instituicao=1&vdata=2019-03-01");
 $disciplinas_predio_tres = $crawler->buscarDisciplinas($todo_dia);
 ?>
 
