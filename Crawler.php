@@ -51,7 +51,7 @@ class Crawler {
             if ($todo_dia == true) {
                 $data = "00:00";
             } else {
-                $data = date('H:i',strtotime(date('H:i') . ' -15 minutes'));
+                $data = date('H:i',strtotime(date('H:i') . ' -40 minutes'));
             }
             
             if ($filhinhos->item(1) != null && $filhinhos->item(3) != null && @$filhinhos->item(1)->getElementsByTagName("small")[0]->textContent != "" && $data < substr($filhinhos->item(2)->textContent, 0, 5)) {
