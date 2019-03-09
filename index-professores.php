@@ -42,7 +42,7 @@ $todos_professores = $crawler->buscarProfessores();
             </h3>
             <div class="columns">
                 <div class="column is-4">
-                    Filtre por nome ou por área:<input class="input" type="text" id="filtraCards" placeholder="Digite seu filtro">
+                    Filtre por nome, departamento ou por área de conhecimento:<input class="input" type="text" id="filtraCards" placeholder="Digite seu filtro">
                 </div>
                 <div class="column is-4">
                   <br>
@@ -76,7 +76,7 @@ $todos_professores = $crawler->buscarProfessores();
                             <br>
                           <label class="nome-departamento">  <?php echo $d->departamento; ?> </label>
                             <br>
-                            <small><?php echo $d->area_conhecimento; ?></small><br>
+                            <small class="nome-area"><?php echo $d->area_conhecimento; ?></small><br>
                           <small><a herf="mailto:<?php echo $d->email; ?>"> <?php echo $d->email; ?>  </a> - <a href="<?php echo $d->lattes; ?>"> Lattes </a></small>  
                           </p>
                         </div>
@@ -208,7 +208,7 @@ $todos_professores = $crawler->buscarProfessores();
         $("#filtraCards").keyup(function(){        
             var valor = $(this).val().toLowerCase();
             $(".cards").each(function(){
-                if ($(this).find('[class="nome-prof"]').text().toLowerCase().indexOf(valor) > -1 || $(this).find('[class="nome-departamento"]').text().toLowerCase().indexOf(valor) > -1) {
+                if ($(this).find('[class="nome-prof"]').text().toLowerCase().indexOf(valor) > -1 || $(this).find('[class="nome-departamento"]').text().toLowerCase().indexOf(valor) > -1 || $(this).find('[class="nome-area"]').text().toLowerCase().indexOf(valor) > -1) {
                     $(this).fadeIn();
                 } else {
                     $(this).fadeOut();
