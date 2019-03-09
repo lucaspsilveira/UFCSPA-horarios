@@ -31,12 +31,17 @@ $disciplinas_predio_tres = $crawler->buscarDisciplinas($todo_dia);
   <section class="hero is-small is-primary is-bold">
   <div class="hero-body">
     <div class="container">
+    <div class="columns"> 
+    <div class="column is-11"> 
       <h1 class="title">
         Horários UFCSPA
       </h1>
       <h2 class="subtitle">
       Horários das salas de aula da <strong>UFCSPA</strong>
       </h2>
+      </div>
+      <div class="column is-1"><a href="index-professores.php" style=" text-decoration: underline;">Corpo Docente</a></div>
+    </div>
     </div>
   </div>
 </section>

@@ -22,15 +22,20 @@ $todos_professores = $crawler->buscarProfessores();
 			  crossorigin="anonymous"></script>
   </head>
   <body>
-  <section class="hero is-small is-primary is-bold">
+  <section class="hero is-small is-dark is-bold">
   <div class="hero-body">
     <div class="container">
+    <div class="columns"> 
+    <div class="column is-11"> 
       <h1 class="title">
         Corpo Docente UFCSPA
       </h1>
       <h2 class="subtitle">
       Lista do corpo docente da <strong>UFCSPA</strong>
       </h2>
+      </div>
+      <div class="column is-1"><a href="index.php"  style=" text-decoration: underline;">Horários</a></div>
+    </div>
     </div>
   </div>
 </section>
