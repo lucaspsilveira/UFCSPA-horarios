@@ -4,6 +4,7 @@ class Crawler {
     private $site;
     private $instituicao;
     private $predio;
+    private $array_todos_professores;
 
     
 
@@ -11,6 +12,7 @@ class Crawler {
         $this->site = $site;
         $this->instituicao = $instituicao;
         $this->predio = $predio;
+        $this->array_todos_professores = array();
     }
 
     function acessaSite() {
@@ -75,11 +77,12 @@ class Crawler {
         $pagina_gl = $this->acessaSite();
         $this->site = "http://sistema.ufcspa.edu.br/docentes/mod/gerador_tab_docentes/view/mz_joomla.php";
         $pagina_mz = $this->acessaSite();
-        $array_todos_professores = array();
-        $array_todos_professores[] =  $this->trataPaginaProfessores($pagina_af);
-        $array_todos_professores[] =  $this->trataPaginaProfessores($pagina_gl);
-        $array_todos_professores[] =  $this->trataPaginaProfessores($pagina_mz);
-        return $array_todos_professores;
+        
+        $this->trataPaginaProfessores($pagina_af);
+        $this->trataPaginaProfessores($pagina_gl);
+        $this->trataPaginaProfessores($pagina_mz);
+
+        return $this->array_todos_professores;
     }
 
     function trataPaginaProfessores($pagina){
@@ -97,10 +100,9 @@ class Crawler {
                 $linha->titulacao =  $filhinhos->item(3)->textContent;
                 $linha->email = preg_replace("/mailto:/", "", $filhinhos->item(5)->firstChild->getAttribute("href"));
                 $linha->lattes =  $filhinhos->item(6)->firstChild->getAttribute("href");  
-                $array_professores[] = $linha; 
+                $this->array_todos_professores[] = $linha; 
             }
         }
-        return $array_professores;
     }
 
     /**
