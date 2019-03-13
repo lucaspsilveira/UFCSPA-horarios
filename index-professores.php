@@ -82,7 +82,7 @@ $todos_professores = $crawler->buscarProfessores();
                           <label class="nome-departamento">  <?php echo $d->departamento; ?> </label>
                             <br>
                             <small class="nome-area"><?php echo $d->area_conhecimento; ?></small><br>
-                          <small><a herf="mailto:<?php echo $d->email; ?>"> <?php echo $d->email; ?>  </a> - <a href="<?php echo $d->lattes; ?>"> Lattes </a></small>  
+                          <small><a href="mailto:<?php echo $d->email; ?>"> <?php echo $d->email; ?>  </a> - <a href="<?php echo $d->lattes; ?>"> Lattes </a></small>  
                           </p>
                         </div>
                         <!-- <nav class="level is-mobile">
