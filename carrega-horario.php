@@ -1,6 +1,6 @@
 <?php
 $link = "http://salas.ufcspa.edu.br/w8_relatorio_dia.php";
-$link = "http://salas.ufcspa.edu.br/w8_relatorio_dia.php?vid_pd=1&vid_instituicao=1&vdata=2019-03-02";
+//$link = "http://salas.ufcspa.edu.br/w8_relatorio_dia.php?vid_pd=1&vid_instituicao=1&vdata=2019-03-02";
 $chamada = curl_init($link);
 curl_setopt($chamada, CURLOPT_RETURNTRANSFER, TRUE);
 

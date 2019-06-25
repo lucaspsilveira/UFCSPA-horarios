@@ -51,7 +51,7 @@ $todos_professores = $crawler->buscarProfessores();
                 </div>
                 <div class="column is-4">
                   <br>
-                     <input id="check-dia-todo" class="checkbox" type="checkbox" id="filtraCards" <?php if($todos_prof) {echo "checked";} else { echo "";} ?>> Mostrar todos os professores
+                     <!-- <input id="check-dia-todo" class="checkbox" type="checkbox" id="filtraCards" <?php if($todos_prof) {echo "checked";} else { echo "";} ?>> Mostrar todos os professores -->
                 </div>
             </div>
 
@@ -118,7 +118,7 @@ $todos_professores = $crawler->buscarProfessores();
   <footer class="footer">
   <div class="content has-text-centered">
     <p>
-      <strong>Desenvolvido</strong> por <a target="_blank" href="www.linkedin.com/in/lucas-pachecos
+      <strong>Desenvolvido</strong> por <a target="_blank" href="https://linkedin.com/in/lucas-pachecos
 ">Lucas Pacheco</a> <br> <br>
       <a  target="_blank" href="https://bulma.io/">
       <img src="https://bulma.io/images/made-with-bulma.png" alt="Made with Bulma" width="128" height="24">

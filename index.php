@@ -216,7 +216,7 @@ $disciplinas_predio_tres = $crawler->buscarDisciplinas($todo_dia);
   <footer class="footer">
   <div class="content has-text-centered">
     <p>
-      <strong>Desenvolvido</strong> por <a target="_blank" href="www.linkedin.com/in/lucas-pachecos
+      <strong>Desenvolvido</strong> por <a target="_blank" href="https://linkedin.com/in/lucas-pachecos
 ">Lucas Pacheco</a> <br> <br>
       <a  target="_blank" href="https://bulma.io/">
       <img src="https://bulma.io/images/made-with-bulma.png" alt="Made with Bulma" width="128" height="24">
