@@ -21,6 +21,7 @@ $disciplinas_predio_tres = $crawler->buscarDisciplinas($todo_dia);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Horários UFCSPA</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <link rel="manifest" href="manifest.json">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script
 			  src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -321,4 +322,12 @@ $disciplinas_predio_tres = $crawler->buscarDisciplinas($todo_dia);
         });
     });
 </script>
+ <script>
+      if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js')
+          .then(function() {
+                console.log('Service Worker Registered');
+          });
+      }
+    </script>
 </html>
