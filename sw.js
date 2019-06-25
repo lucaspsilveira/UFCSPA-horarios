@@ -1,6 +1,5 @@
 var cacheName = 'ufcspa-horarios';
 var filesToCache = [
-  '/',
   '/index-professores.php'
 ];
 self.addEventListener('install', function(e) {
